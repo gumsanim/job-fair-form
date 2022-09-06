@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="전남일자리플랫폼" />
+    <meta name="description" content="전남 일자리 박람회" />
+    <meta
+      name="keywords"
+      content="취업, 일자리, 취업박람회, 조선, 해양, 전남 일자리플랫폼, 전남, 해양산업 일자리, 전남 무안"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전남일자리플랫폼</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script
+    src="./index.js" type="module"
+    ></script>
+    <script src="./regex.js" type="module"></script>
+    <script src="./message.js" type="module"></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h4 class="title">2022 초광역 조선업 일자리 박람회 사전등록</h3>
+        <div class="mb-3">
+          <label for="name" class="form-label">성명</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="성명을 입력해주세요."
+          />
+        </div>
+        <div class="mb-3">
+          <div class="form-label">성별</div>
+          <div class="form-check form-check-inline">
+            <input
+              name="gender"
+              class="form-check-input"
+              type="radio"
+              id="male"
+              value="남"
+            />
+            <label class="form-check-label" for="male">남성</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="gender"
+              class="form-check-input"
+              type="radio"
+              id="female"
+              value="여"
+            />
+            <label class="form-check-label" for="female">여성</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="birthday" class="form-label">생년월일</label>
+          <input
+            type="text"
+            class="form-control"
+            id="birthday"
+            placeholder="생년월일을 입력해주세요. ex)930528"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">이메일</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="이메일을 입력해주세요."
+          />
+        </div>
+        <div class="mb-1">
+          <label for="address" class="form-label">주소</label>
+          <div class="address-search-container">
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                placeholder="주소를 입력해주세요."
+              />
+              <button class="btn btn-dark address-search">주소검색</button>
+          </div>
+        </div>
+        <div class="mb-3" class="detail-address">
+          <input
+            type="text"
+            class="form-control"
+            id="detail-address"
+            placeholder="상세주소를 입력해주세요."
+          />
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">연락처</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tel"
+            placeholder="연락처를 입력해주세요 ex) 01012345678 (-제외)"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="form-label">신입/경력</div>
+          <div class="form-check form-check-inline">
+            <input
+              name="experience"
+              class="form-check-input"
+              type="radio"
+              id="novice"
+              value="신입"
+            />
+            <label class="form-check-label" for="novice">신입</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="experience"
+              class="form-check-input"
+              type="radio"
+              id="experienced"
+              value="경력"
+            />
+            <label class="form-check-label" for="experienced">경력</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-label">구직상태</div>
+          <div class="form-check form-check-inline">
+            <input
+              name="current_job_state"
+              class="form-check-input"
+              type="radio"
+              id="highschool"
+              value="특성화고졸업예정"
+            />
+            <label class="form-check-label" for="highschool"
+              >특성화고 졸업예정</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="current_job_state"
+              class="form-check-input"
+              type="radio"
+              id="college"
+              value="대학졸업예정"
+            />
+            <label class="form-check-label" for="college">대학졸업 예정</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="current_job_state"
+              class="form-check-input"
+              type="radio"
+              id="seeking_job"
+              value="구직중"
+            />
+            <label class="form-check-label" for="seeking_job">구직중</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="current_job_state"
+              class="form-check-input"
+              type="radio"
+              id="transfer"
+              value="이직예정"
+            />
+            <label class="form-check-label" for="transfer">이직 예정</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-label">희망직무</div>
+          <div class="form-check form-check-inline">
+            <input
+              name="job"
+              class="form-check-input"
+              type="radio"
+              id="weld"
+              value="용접"
+            />
+            <label class="form-check-label" for="weld">용접</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="job"
+              class="form-check-input"
+              type="radio"
+              id="paint"
+              value="도장"
+            />
+            <label class="form-check-label" for="paint">도장</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="job"
+              class="form-check-input"
+              type="radio"
+              id="design"
+              value="의장"
+            />
+            <label class="form-check-label" for="design">의장</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="job"
+              class="form-check-input"
+              type="radio"
+              id="manufacture"
+              value="가공"
+            />
+            <label class="form-check-label" for="manufacture">가공</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="job"
+              class="form-check-input"
+              type="radio"
+              id="others"
+              value="기타"
+            />
+            <label class="form-check-label" for="others">기타</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-label">참가목적</div>
+          <div class="form-check form-check-inline">
+            <input
+              name="purpose"
+              class="form-check-input"
+              type="radio"
+              id="interview"
+              value="현장면접"
+            />
+            <label class="form-check-label" for="interview">현장면접</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="purpose"
+              class="form-check-input"
+              type="radio"
+              id="fair"
+              value="박람회참가"
+            />
+            <label class="form-check-label" for="fair">박람회참가</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              name="purpose"
+              class="form-check-input"
+              type="radio"
+              id="tour"
+              value="부대행사이용"
+            />
+            <label class="form-check-label" for="tour">부대행사이용</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-label">개인정보수집및이용*</div>
+          <div class="form-check form-check-inline">
+            <input
+              name="privacy_policy"
+              class="form-check-input"
+              type="radio"
+              id="agree"
+              value="동의"
+            />
+            <label class="form-check-label" for="agree"
+              >동의함 <span style="color: red">(필수)</span></label
+            >
+          </div>
+        </div>
+        <div class="submit">
+            <button type="button" class="btn btn-success submit-form">사전등록</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

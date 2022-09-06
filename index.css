@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  padding: 0;
+}
+
+section {
+  max-width: 40rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-search-container {
+  display: flex;
+}
+
+.address-search {
+  min-width: 10rem;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 14px;
+  }
+
+  section {
+    max-width: 30rem;
+  }
+
+  .address-search {
+    font-size: 12px !important;
+    min-width: 5rem;
+  }
+
+  .submit-form {
+    font-size: 12px !important;
+  }
+}
