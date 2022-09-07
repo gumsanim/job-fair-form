@@ -20,6 +20,7 @@ const purpose = Array.from(document.querySelectorAll('input[name="purpose"]'));
 const privacy_policy = document.querySelector('input[name="privacy_policy"]');
 const address_search = document.querySelector(".address-search");
 const submit_button = document.querySelector(".submit-form");
+const mobile_address_search = document.querySelector(".mobile-address-search");
 
 let formData = {
   name: name.value,
@@ -146,8 +147,12 @@ address_search.addEventListener("click", () => {
   openAddressFinder();
 });
 
+mobile_address_search.addEventListener("click", () => {
+  openAddressFinder();
+});
+
 // 사전등록 버튼 클릭 시 폼 전송
-submit_button.addEventListener("click", (e) => {
+submit_button.addEventListener("click", () => {
   if (validateForm(formData)) {
     fetch("http://localhost:4300/api/jobfair/reservation", {
       method: "POST",
@@ -157,6 +162,34 @@ submit_button.addEventListener("click", (e) => {
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           alert("사전등록이 완료되었습니다.");
+          name.value = "";
+          gender[0].checked;
+          birth.value = "";
+          email.value = "";
+          address.value = "";
+          detail_address.value = "";
+          tel.value = "";
+          experience[0].checked;
+          current_job_state[0].checked;
+          position[0].checked;
+          purpose[0].checked;
+          privacy_policy.checked = false;
+          formData = {
+            ...formData,
+            name: "",
+            gender: gender.find((elem) => elem.checked).value,
+            birth: "",
+            email: "",
+            address: "",
+            detail_address: "",
+            tel: "",
+            experience: experience.find((elem) => elem.checked).value,
+            current_job_state: current_job_state.find((elem) => elem.checked)
+              .value,
+            position: position.find((elem) => elem.checked).value,
+            purpose: purpose.find((elem) => elem.checked).value,
+            privacy_policy: privacy_policy.value,
+          };
         } else {
           alert("에러가 발생하였습니다. 다시 한번 등록하시길 바랍니다.");
         }

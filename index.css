@@ -32,6 +32,10 @@ h4 {
   display: flex;
 }
 
+.mobile-address-search {
+  display: none !important;
+}
+
 .address-search {
   min-width: 10rem;
 }
@@ -44,16 +48,22 @@ h4 {
 
 @media (max-width: 500px) {
   html {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   section {
     max-width: 30rem;
   }
 
-  .address-search {
+  .mobile-address-search {
     font-size: 12px !important;
     min-width: 5rem;
+    display: inline-block !important;
+    margin-bottom: 3px;
+  }
+
+  .address-search {
+    display: none !important;
   }
 
   .submit-form {
@@ -61,6 +71,6 @@ h4 {
   }
 
   .title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
