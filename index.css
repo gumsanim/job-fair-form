@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   padding: 0;
   padding: 0;
@@ -54,5 +58,9 @@ h4 {
 
   .submit-form {
     font-size: 12px !important;
+  }
+
+  .title {
+    font-size: 1.2rem;
   }
 }

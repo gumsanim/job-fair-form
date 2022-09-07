@@ -18,18 +18,17 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
+  </head>
+  <body>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-    <script
-    src="./index.js" type="module"
-    ></script>
-    <script src="./regex.js" type="module"></script>
-    <script src="./message.js" type="module"></script>
-  </head>
-  <body>
+    <script src="./index.js" type="module"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</script>
+  
     <main>
       <section>
         <h4 class="title">2022 초광역 조선업 일자리 박람회 사전등록</h3>
@@ -51,6 +50,7 @@
               type="radio"
               id="male"
               value="남"
+              checked=true
             />
             <label class="form-check-label" for="male">남성</label>
           </div>
@@ -66,11 +66,11 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="birthday" class="form-label">생년월일</label>
+          <label for="birth" class="form-label">생년월일</label>
           <input
             type="text"
             class="form-control"
-            id="birthday"
+            id="birth"
             placeholder="생년월일을 입력해주세요. ex)930528"
           />
         </div>
@@ -95,7 +95,7 @@
               <button class="btn btn-dark address-search">주소검색</button>
           </div>
         </div>
-        <div class="mb-3" class="detail-address">
+        <div class="mb-3">
           <input
             type="text"
             class="form-control"
@@ -121,6 +121,7 @@
               type="radio"
               id="novice"
               value="신입"
+              checked=true
             />
             <label class="form-check-label" for="novice">신입</label>
           </div>
@@ -144,6 +145,7 @@
               type="radio"
               id="highschool"
               value="특성화고졸업예정"
+              checked=true
             />
             <label class="form-check-label" for="highschool"
               >특성화고 졸업예정</label
@@ -189,6 +191,7 @@
               type="radio"
               id="weld"
               value="용접"
+              checked=true
             />
             <label class="form-check-label" for="weld">용접</label>
           </div>
@@ -199,6 +202,7 @@
               type="radio"
               id="paint"
               value="도장"
+              
             />
             <label class="form-check-label" for="paint">도장</label>
           </div>
@@ -242,6 +246,7 @@
               type="radio"
               id="interview"
               value="현장면접"
+              checked=true
             />
             <label class="form-check-label" for="interview">현장면접</label>
           </div>
@@ -252,6 +257,7 @@
               type="radio"
               id="fair"
               value="박람회참가"
+              
             />
             <label class="form-check-label" for="fair">박람회참가</label>
           </div>
@@ -268,18 +274,23 @@
         </div>
         <div class="mb-3">
           <div class="form-label">개인정보수집및이용*</div>
+          <div style="display:flex; justify-content:space-between; cursor:pointer">
           <div class="form-check form-check-inline">
             <input
-              name="privacy_policy"
+              name="agreement"
               class="form-check-input"
               type="radio"
               id="agree"
-              value="동의"
+              value=""
             />
             <label class="form-check-label" for="agree"
               >동의함 <span style="color: red">(필수)</span></label
             >
           </div>
+          <div>
+            <a href="https://season-public-resource.s3.ap-northeast-2.amazonaws.com/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B7%A8%EA%B8%89%EA%B4%80%EB%A6%AC.pdf" download>약관 상세보기</a>
+          </div>
+        </div>
         </div>
         <div class="submit">
             <button type="button" class="btn btn-success submit-form">사전등록</button>
