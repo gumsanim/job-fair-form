@@ -13,9 +13,11 @@ const experience = Array.from(
 const current_job_state = Array.from(
   document.querySelectorAll('input[name="current_job_state"]')
 );
-const job = Array.from(document.querySelectorAll('input[name="job"]'));
+const position = Array.from(
+  document.querySelectorAll('input[name="position"]')
+);
 const purpose = Array.from(document.querySelectorAll('input[name="purpose"]'));
-const agreement = document.querySelector('input[name="agreement"]');
+const privacy_policy = document.querySelector('input[name="privacy_policy"]');
 const address_search = document.querySelector(".address-search");
 const submit_button = document.querySelector(".submit-form");
 
@@ -29,9 +31,9 @@ let formData = {
   tel: tel.value,
   experience: experience.find((elem) => elem.checked).value,
   current_job_state: current_job_state.find((elem) => elem.checked).value,
-  job: job.find((elem) => elem.checked).value,
+  position: position.find((elem) => elem.checked).value,
   purpose: purpose.find((elem) => elem.checked).value,
-  agreement: agreement.value,
+  privacy_policy: privacy_policy.value,
 };
 
 name.addEventListener("change", (e) => {
@@ -103,11 +105,11 @@ for (let i = 0; i < current_job_state.length; i++) {
   });
 }
 
-for (let i = 0; i < job.length; i++) {
-  job[i].addEventListener("change", (e) => {
+for (let i = 0; i < position.length; i++) {
+  position[i].addEventListener("change", (e) => {
     formData = {
       ...formData,
-      job: e.target.value,
+      position: e.target.value,
     };
   });
 }
@@ -121,10 +123,10 @@ for (let i = 0; i < purpose.length; i++) {
   });
 }
 
-agreement.addEventListener("change", (e) => {
+privacy_policy.addEventListener("change", (e) => {
   formData = {
     ...formData,
-    agreement: "동의",
+    privacy_policy: "동의",
   };
 });
 
@@ -147,16 +149,10 @@ address_search.addEventListener("click", () => {
 // 사전등록 버튼 클릭 시 폼 전송
 submit_button.addEventListener("click", (e) => {
   if (validateForm(formData)) {
-    let form = {
-      ...formData,
-      address: `${formData.address} ${formData.detail_address}`,
-    };
-    delete form.detail_address;
-
     fetch("http://localhost:4300/api/jobfair/reservation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify(formData),
     })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {

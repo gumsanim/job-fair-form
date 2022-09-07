@@ -8,9 +8,9 @@ const REGEX = {
   tel: /^010([0-9]{3,4})([0-9]{4})$/,
   experience: /.+/,
   current_job_state: /.+/,
-  job: /.+/,
+  position: /.+/,
   purpose: /.+/,
-  agreement: /.+/,
+  privacy_policy: /.+/,
 };
 
 export default REGEX;
