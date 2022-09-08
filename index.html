@@ -25,9 +25,7 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-    <script src="./index.js" type="module"></script>
-    <!-- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
-</script>
+    <!-- <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
     <main>
       <section>
         <h4 class="title">2022 초광역 조선업 일자리 박람회 사전등록</h3>
@@ -299,3 +297,320 @@
     </main>
   </body>
 </html>
+<script>
+const name = document.getElementById("name");
+const gender = Array.from(document.querySelectorAll('input[name="gender"]'));
+const birth = document.querySelector("#birth");
+const email = document.querySelector("#email");
+const address = document.querySelector("#address");
+const detail_address = document.querySelector("#detail-address");
+const tel = document.querySelector("#tel");
+const experience = Array.from(
+  document.querySelectorAll('input[name="experience"]')
+);
+const current_job_state = Array.from(
+  document.querySelectorAll('input[name="current_job_state"]')
+);
+const position = Array.from(
+  document.querySelectorAll('input[name="position"]')
+);
+const purpose = Array.from(document.querySelectorAll('input[name="purpose"]'));
+const privacy_policy = document.querySelector('input[name="privacy_policy"]');
+const submit_button = document.querySelector(".submit-form");
+const REGEX = {
+  name: /^[ㄱ-ㅎ|가-힣|a-z|A-Z]+$/,
+  gender: /.+/,
+  birth: /^[0-9]{2}(0[1-9]|1[0-2])(0[0-9]|1[0-9]|2[0-9]|3[0-1])$/,
+  email: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+  address: /.+/,
+  detail_address: /.+/,
+  tel: /^010([0-9]{3,4})([0-9]{4})$/,
+  experience: /.+/,
+  current_job_state: /.+/,
+  position: /.+/,
+  purpose: /.+/,
+  privacy_policy: /.+/,
+};
+const ALERT_MESSAGE = {
+  name: "성명을 입력해주세요.",
+  gender: "성별을 체크해주세요.",
+  birth:
+    "생년월일을 형식에 맞게 입력해주세요. ex) 생년월일이 1993.05.28 인 경우 930528",
+  email: "이메일을 형식에 맞게 입력해주세요.",
+  address: "주소를 입력해주세요.",
+  detail_address: "상세주소를 입력해주세요",
+  tel: "연락처를 입력해주세요. ex) 연락처가 010-1234-5678 인 경우 01012345678",
+  experience: "신입/경력 여부를 체크해주세요.",
+  current_job_state: "구직상태를 체크해주세요.",
+  position: "희망직무를 선택해주세요.",
+  purpose: "참가목적을 선택해주세요.",
+  privacy_policy: "개인정보 수집 및 허용은 필수입니다.",
+};
+
+const validateForm = (formData) => {
+  for (let key in formData) {
+    if (!REGEX[key].test(formData[key])) {
+      alert(ALERT_MESSAGE[key]);
+      return false;
+    }
+  }
+  return true;
+};
+
+let formData = {
+  name: name.value,
+  gender: gender.find((elem) => elem.checked).value,
+  birth: birth.value,
+  email: email.value,
+  address: address.value,
+  detail_address: detail_address.value,
+  tel: tel.value,
+  experience: experience.find((elem) => elem.checked).value,
+  current_job_state: current_job_state.find((elem) => elem.checked).value,
+  position: position.find((elem) => elem.checked).value,
+  purpose: purpose.find((elem) => elem.checked).value,
+  privacy_policy: privacy_policy.value,
+};
+
+name.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    name: e.target.value,
+  };
+});
+
+for (let i = 0; i < gender.length; i++) {
+  gender[i].addEventListener("change", (e) => {
+    formData = {
+      ...formData,
+      gender: e.target.value,
+    };
+  });
+}
+
+birth.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    birth: e.target.value,
+  };
+});
+
+email.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    email: e.target.value,
+  };
+});
+
+address.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    address: e.target.value,
+  };
+});
+
+detail_address.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    detail_address: e.target.value,
+  };
+});
+
+tel.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    tel: e.target.value,
+  };
+});
+
+for (let i = 0; i < experience.length; i++) {
+  experience[i].addEventListener("change", (e) => {
+    formData = {
+      ...formData,
+      experience: e.target.value,
+    };
+  });
+}
+
+for (let i = 0; i < current_job_state.length; i++) {
+  current_job_state[i].addEventListener("change", (e) => {
+    formData = {
+      ...formData,
+      current_job_state: e.target.value,
+    };
+  });
+}
+
+for (let i = 0; i < position.length; i++) {
+  position[i].addEventListener("change", (e) => {
+    formData = {
+      ...formData,
+      position: e.target.value,
+    };
+  });
+}
+
+for (let i = 0; i < purpose.length; i++) {
+  purpose[i].addEventListener("change", (e) => {
+    formData = {
+      ...formData,
+      purpose: e.target.value,
+    };
+  });
+}
+
+privacy_policy.addEventListener("change", (e) => {
+  formData = {
+    ...formData,
+    privacy_policy: "동의",
+  };
+});
+
+const openAddressFinder = () => {
+  new window.daum.Postcode({
+    oncomplete: (data) => {
+      address.value = `${data.address} (${data.zonecode})`;
+      formData = {
+        ...formData,
+        address: `${data.address} (${data.zonecode})`,
+      };
+    },
+  }).open();
+};
+
+
+// });
+// 사전등록 버튼 클릭 시 폼 전송
+submit_button.addEventListener("click", () => {
+  console.log("dd");
+  if (validateForm(formData)) {
+    fetch("https://api.season.ne.kr/api/jobfair/reservation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          alert("사전등록이 완료되었습니다.");
+          name.value = "";
+          gender[0].checked;
+          birth.value = "";
+          email.value = "";
+          address.value = "";
+          detail_address.value = "";
+          tel.value = "";
+          experience[0].checked = true;
+          current_job_state[0].checked = true;
+          position[0].checked = true;
+          purpose[0].checked = true;
+          privacy_policy.checked = false;
+          formData = {
+            ...formData,
+            name: "",
+            gender: gender.find((elem) => elem.checked).value,
+            birth: "",
+            email: "",
+            address: "",
+            detail_address: "",
+            tel: "",
+            experience: experience.find((elem) => elem.checked).value,
+            current_job_state: current_job_state.find((elem) => elem.checked)
+              .value,
+            position: position.find((elem) => elem.checked).value,
+            purpose: purpose.find((elem) => elem.checked).value,
+            privacy_policy: privacy_policy.value,
+          };
+          console.log(formData);
+        } else {
+          alert("에러가 발생하였습니다. 다시 한번 등록하시길 바랍니다.");
+        }
+      })
+      .catch((e) => {
+        alert("에러가 발생하였습니다. 다시 한번 등록하시길 바랍니다.");
+        console.log(e.message);
+      });
+  }
+});
+
+
+</script>
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  padding: 0;
+  padding: 0;
+}
+
+section {
+  max-width: 40rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-search-container {
+  display: flex;
+}
+
+.mobile-address-search {
+  display: none !important;
+}
+
+.address-search {
+  min-width: 10rem;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 13px;
+  }
+
+  section {
+    max-width: 30rem;
+  }
+
+  .mobile-address-search {
+    font-size: 12px !important;
+    min-width: 5rem;
+    display: inline-block !important;
+    margin-bottom: 3px;
+  }
+
+  .address-search {
+    display: none !important;
+  }
+
+  .submit-form {
+    font-size: 12px !important;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
