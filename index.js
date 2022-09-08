@@ -18,9 +18,9 @@ const position = Array.from(
 );
 const purpose = Array.from(document.querySelectorAll('input[name="purpose"]'));
 const privacy_policy = document.querySelector('input[name="privacy_policy"]');
-const address_search = document.querySelector(".address-search");
+// const address_search = document.querySelector(".address-search");
 const submit_button = document.querySelector(".submit-form");
-const mobile_address_search = document.querySelector(".mobile-address-search");
+// const mobile_address_search = document.querySelector(".mobile-address-search");
 
 let formData = {
   name: name.value,
@@ -131,28 +131,29 @@ privacy_policy.addEventListener("change", (e) => {
   };
 });
 
-const openAddressFinder = () => {
-  new window.daum.Postcode({
-    oncomplete: (data) => {
-      address.value = `${data.address} (${data.zonecode})`;
-      formData = {
-        ...formData,
-        address: `${data.address} (${data.zonecode})`,
-      };
-    },
-  }).open();
-};
+// const openAddressFinder = () => {
+//   new window.daum.Postcode({
+//     oncomplete: (data) => {
+//       address.value = `${data.address} (${data.zonecode})`;
+//       formData = {
+//         ...formData,
+//         address: `${data.address} (${data.zonecode})`,
+//       };
+//     },
+//   }).open();
+// };
 
-address_search.addEventListener("click", () => {
-  openAddressFinder();
-});
+// address_search.addEventListener("click", () => {
+//   openAddressFinder();
+// });
 
-mobile_address_search.addEventListener("click", () => {
-  openAddressFinder();
-});
+// mobile_address_search.addEventListener("click", () => {
+//   openAddressFinder();
+// });
 
 // 사전등록 버튼 클릭 시 폼 전송
 submit_button.addEventListener("click", () => {
+  console.log("dd");
   if (validateForm(formData)) {
     fetch("https://api.season.ne.kr/api/jobfair/reservation", {
       method: "POST",
