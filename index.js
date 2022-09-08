@@ -154,7 +154,7 @@ mobile_address_search.addEventListener("click", () => {
 // 사전등록 버튼 클릭 시 폼 전송
 submit_button.addEventListener("click", () => {
   if (validateForm(formData)) {
-    fetch("https://api.season.ne.kr", {
+    fetch("https://api.season.ne.kr/api/jobfair/reservation", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
