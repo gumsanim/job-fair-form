@@ -169,10 +169,10 @@ submit_button.addEventListener("click", () => {
           address.value = "";
           detail_address.value = "";
           tel.value = "";
-          experience[0].checked;
-          current_job_state[0].checked;
-          position[0].checked;
-          purpose[0].checked;
+          experience[0].checked = true;
+          current_job_state[0].checked = true;
+          position[0].checked = true;
+          purpose[0].checked = true;
           privacy_policy.checked = false;
           formData = {
             ...formData,
@@ -190,6 +190,7 @@ submit_button.addEventListener("click", () => {
             purpose: purpose.find((elem) => elem.checked).value,
             privacy_policy: privacy_policy.value,
           };
+          console.log(formData);
         } else {
           alert("에러가 발생하였습니다. 다시 한번 등록하시길 바랍니다.");
         }
